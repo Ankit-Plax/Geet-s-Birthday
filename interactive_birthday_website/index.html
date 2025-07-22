@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro" class="screen">
+        <h1>🎁 Hey You...</h1>
+        <p>Click the gift box to begin your surprise!</p>
+        <div id="gift-box" onclick="startJourney()">🎁</div>
+    </div>
+
+    <div id="timeline" class="screen hidden">
+        <h2>📸 Our Memories</h2>
+        <div class="memory">Memory 1 (placeholder)</div>
+        <div class="memory">Memory 2 (placeholder)</div>
+        <button onclick="nextToQuiz()">Next ➡️</button>
+    </div>
+
+    <div id="quiz" class="screen hidden">
+        <h2>🧠 Quiz Time</h2>
+        <p>Where did we first talk?</p>
+        <input id="quizAnswer" placeholder="Type your answer...">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="quizFeedback"></p>
+    </div>
+
+    <div id="note" class="screen hidden">
+        <h2>💌 A Note for You</h2>
+        <p id="typedNote"></p>
+    </div>
+
+    <audio id="bgMusic" loop autoplay>
+        <source src="music/placeholder.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

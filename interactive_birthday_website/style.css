@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff0f5;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#gift-box {
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+#gift-box:hover {
+    transform: scale(1.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.memory {
+    margin: 20px;
+    padding: 15px;
+    background: #ffe4e1;
+    border-radius: 10px;
+    max-width: 500px;
+}
