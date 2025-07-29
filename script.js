@@ -15,20 +15,16 @@ function toggleMusic() {
 function openGift() {
     document.getElementById("gift-screen").style.display = "none";
     document.getElementById("background-music").play();
-
-    // 🎉 Sparkles + pop sound
-    const sparkles = document.getElementById("sparkles");
-    const pop = new Audio("audio/pop.mp3"); // Make sure this file exists
-    pop.play();
-    sparkles.classList.add("active");
-    setTimeout(() => sparkles.classList.remove("active"), 1500);
-
-    // Show first sections
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
 
-    // Start floating bubbles
-    spawnBubbles();
+    // 🎉 Sparkle effect
+    triggerSparkles();
+
+    // 💬 Start bubbles immediately
+    startBubbles();
+}
+
 }
 
 // LOVE QUIZ RESPONSE
