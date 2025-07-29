@@ -33,6 +33,28 @@ function openGift() {
     startBubbles();
 }
 
+function startBubbles() {
+    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Add your own image paths
+    const bubbleContainer = document.getElementById("bubbles");
+
+    for (let i = 0; i < 25; i++) {
+        setTimeout(() => {
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
+
+            const img = document.createElement("img");
+            img.src = bubbleImages[i % bubbleImages.length];
+
+            bubble.appendChild(img);
+            bubble.style.left = Math.random() * 100 + "vw";
+            bubble.style.top = Math.random() * 100 + "vh";
+            bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
+            bubbleContainer.appendChild(bubble);
+        }, i * 300); // gradually spawn bubbles
+    }
+}
+
+
 
 // LOVE QUIZ RESPONSE
 function loveAnswer(isYes) {
@@ -89,16 +111,19 @@ function openFinalGift() {
     const sparkles = document.getElementById("sparkles");
     sparkles.classList.add("active");
 
+    // Hide final gift and show love letter
     document.getElementById("final-section").style.display = "none";
     document.getElementById("love-letter-section").style.display = "block";
 
-    // Stop the bubbles from floating
+    // Stop bubbles from floating behind the love letter
     document.getElementById("bubbles").style.display = "none";
 
+    // Remove sparkles after a second
     setTimeout(() => {
         sparkles.classList.remove("active");
-    }, 1500);
+    }, 1000);
 }
+
 
 // SPAWN BUBBLES FUNCTION
 function spawnBubbles() {
