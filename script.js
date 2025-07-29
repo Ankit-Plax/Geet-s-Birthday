@@ -2,12 +2,10 @@ function openGift() {
     document.getElementById("gift-screen").style.display = "none";
     document.getElementById("background-music").play();
 
-    // Start with just hero and quiz
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
 }
 
-// Music toggle
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -20,7 +18,6 @@ function toggleMusic() {
     }
 }
 
-// LOVE answer
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
@@ -34,7 +31,6 @@ function loveAnswer(isYes) {
     }
 }
 
-// Puzzle answer logic
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
@@ -52,9 +48,8 @@ function puzzleAnswer(el, isCorrect) {
                 if (i < fullMessage.length) {
                     typeTarget.textContent += fullMessage.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 40); // typing speed
+                    setTimeout(typeWriter, 40);
                 } else {
-                    // After typing, wait 4s then show final gift
                     setTimeout(() => {
                         document.getElementById("pre-letter").style.display = "none";
                         document.getElementById("final-section").style.display = "block";
@@ -62,7 +57,6 @@ function puzzleAnswer(el, isCorrect) {
                 }
             }
 
-            // Start typing
             typeTarget.textContent = "";
             typeWriter();
 
@@ -73,33 +67,16 @@ function puzzleAnswer(el, isCorrect) {
     }
 }
 
-
-// Final gift
 function openFinalGift() {
     document.getElementById("final-section").style.display = "none";
     document.getElementById("love-letter").style.display = "block";
 }
 
-// Slideshow logic (if you still need it for future)
-let currentSlide = 0;
-const slides = document.querySelectorAll(".memory-slide");
-if (slides.length > 0) {
-    slides[currentSlide].classList.add("active");
-    setInterval(() => {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
-    }, 4000);
-}
-
-// Floating bubbles logic
-const bubbleImages = [
-    'img1.jpg', 'img2.jpg', 'img3.jpg' // Replace with your real image file names
-];
-
+// Floating bubbles
+const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Replace with real image paths
 const bubbleContainer = document.getElementById("bubbles");
 
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 20; i++) {
     const bubble = document.createElement("div");
     bubble.className = "bubble";
 
@@ -108,8 +85,8 @@ for (let i = 0; i < 12; i++) {
 
     bubble.appendChild(img);
     bubble.style.left = Math.random() * 100 + "vw";
-    bubble.style.top = 100 + Math.random() * 20 + "vh"; // Start below screen
-    bubble.style.animationDuration = 15 + Math.random() * 10 + "s";
+    bubble.style.top = 100 + Math.random() * 50 + "vh";
+    bubble.style.animationDuration = 20 + Math.random() * 15 + "s";
 
     bubbleContainer.appendChild(bubble);
 }
