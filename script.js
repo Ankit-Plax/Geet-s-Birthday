@@ -108,3 +108,39 @@ function puzzleAnswer(el, isCorrect) {
         el.textContent = "Aww close, but try again!";
     }
 }
+function printLoveLetter() {
+    const printContents = document.getElementById("love-letter").innerHTML;
+    const win = window.open("", "", "height=700,width=700");
+    win.document.write(`
+        <html>
+        <head>
+            <title>Love Letter</title>
+            <style>
+                body {
+                    font-family: 'Quicksand', sans-serif;
+                    padding: 20px;
+                    color: #5c004d;
+                    background: #fffafc;
+                }
+                .letter-content {
+                    font-size: 1rem;
+                    line-height: 1.8;
+                }
+                .letter-signature {
+                    margin-top: 2rem;
+                    font-style: italic;
+                    text-align: right;
+                }
+            </style>
+        </head>
+        <body>
+            <div>${printContents}</div>
+        </body>
+        </html>
+    `);
+    win.document.close();
+    win.focus();
+    win.print();
+    win.close();
+}
+
