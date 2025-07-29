@@ -1,4 +1,3 @@
-// MUSIC TOGGLE
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -11,52 +10,59 @@ function toggleMusic() {
     }
 }
 
+function triggerSparkles() {
+    const container = document.getElementById("sparkles");
+    container.innerHTML = ''; // clear existing
+
+    for (let i = 0; i < 60; i++) {
+        const particle = document.createElement("div");
+        particle.className = "sparkle-particle";
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = Math.random() * 150 + 50;
+
+        particle.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
+        particle.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
+        container.appendChild(particle);
+
+        setTimeout(() => container.removeChild(particle), 1200);
+    }
+}
+
 function openGift() {
-    // Hide initial gift screen
     document.getElementById("gift-screen").style.display = "none";
-
-    // Play background music
     document.getElementById("background-music").play();
-
-    // Play pop sound
-    const pop = new Audio("audio/pop.mp3"); // Ensure this file exists in your audio folder
-    pop.play();
-
-    // Trigger animated sparkles
+    document.getElementById("pop-sound").play();
     triggerSparkles();
-
-    // Show hero + quiz sections
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
-
-    // Start bubbles
     startBubbles();
 }
 
-function startBubbles() {
-    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Add your own image paths
-    const bubbleContainer = document.getElementById("bubbles");
+function openFinalGift() {
+    triggerSparkles();
+    document.getElementById("final-section").style.display = "none";
+    document.getElementById("love-letter-section").style.display = "block";
+    document.getElementById("bubbles").style.display = "none";
+}
 
+function startBubbles() {
+    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg'];
+    const bubbleContainer = document.getElementById("bubbles");
     for (let i = 0; i < 25; i++) {
         setTimeout(() => {
             const bubble = document.createElement("div");
             bubble.className = "bubble";
-
             const img = document.createElement("img");
             img.src = bubbleImages[i % bubbleImages.length];
-
             bubble.appendChild(img);
             bubble.style.left = Math.random() * 100 + "vw";
             bubble.style.top = Math.random() * 100 + "vh";
             bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
             bubbleContainer.appendChild(bubble);
-        }, i * 300); // gradually spawn bubbles
+        }, i * 300);
     }
 }
 
-
-
-// LOVE QUIZ RESPONSE
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
@@ -70,7 +76,6 @@ function loveAnswer(isYes) {
     }
 }
 
-// PUZZLE LOGIC
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
@@ -83,7 +88,6 @@ function puzzleAnswer(el, isCorrect) {
             const fullMessage = `Hey Geet,\n\nI know we live far apart, and I couldn’t do all the things I wish I could for your birthday...\n\nBut I poured all my love into something that means the world to me — this letter, just for you.`;
             const typeTarget = document.getElementById("typewriter-text");
             let i = 0;
-
             function typeWriter() {
                 if (i < fullMessage.length) {
                     typeTarget.textContent += fullMessage.charAt(i);
@@ -96,71 +100,11 @@ function puzzleAnswer(el, isCorrect) {
                     }, 4000);
                 }
             }
-
             typeTarget.textContent = "";
             typeWriter();
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
         el.textContent = "Aww close, but try again!";
-    }
-}
-
-// FINAL GIFT OPENER
-function openFinalGift() {
-    const sparkles = document.getElementById("sparkles");
-    sparkles.classList.add("active");
-
-    // Hide final gift and show love letter
-    document.getElementById("final-section").style.display = "none";
-    document.getElementById("love-letter-section").style.display = "block";
-
-    // Stop bubbles from floating behind the love letter
-    document.getElementById("bubbles").style.display = "none";
-
-    // Remove sparkles after a second
-    setTimeout(() => {
-        sparkles.classList.remove("active");
-    }, 1000);
-}
-
-
-// SPAWN BUBBLES FUNCTION
-function spawnBubbles() {
-    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Replace with real paths
-    const bubbleContainer = document.getElementById("bubbles");
-
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-            const bubble = document.createElement("div");
-            bubble.className = "bubble";
-
-            const img = document.createElement("img");
-            img.src = bubbleImages[i % bubbleImages.length];
-            bubble.appendChild(img);
-
-            bubble.style.left = Math.random() * 100 + "vw";
-            bubble.style.top = 100 + Math.random() * 100 + "vh";
-            bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
-
-            bubbleContainer.appendChild(bubble);
-        }, i * 400); // Delayed spawn to avoid clumps
-    }
-}
-function triggerSparkles() {
-    const container = document.getElementById("sparkles");
-    for (let i = 0; i < 30; i++) {
-        const particle = document.createElement("div");
-        particle.className = "sparkle-particle";
-
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = Math.random() * 100 + 30;
-
-        particle.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
-        particle.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
-
-        container.appendChild(particle);
-
-        setTimeout(() => container.removeChild(particle), 1000);
     }
 }
