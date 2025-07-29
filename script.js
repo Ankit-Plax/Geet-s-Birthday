@@ -122,3 +122,20 @@ function spawnBubbles() {
         }, i * 400); // Delayed spawn to avoid clumps
     }
 }
+function triggerSparkles() {
+    const container = document.getElementById("sparkles");
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement("div");
+        particle.className = "sparkle-particle";
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = Math.random() * 100 + 30;
+
+        particle.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
+        particle.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
+
+        container.appendChild(particle);
+
+        setTimeout(() => container.removeChild(particle), 1000);
+    }
+}
