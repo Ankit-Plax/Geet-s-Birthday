@@ -67,3 +67,24 @@ if (slides.length > 0) {
         slides[currentSlide].classList.add("active");
     }, 4000);
 }
+// Bubbles
+const bubbleImages = [
+    'img1.jpg', 'img2.jpg', 'img3.jpg' // replace with real image paths
+];
+
+const bubbleContainer = document.getElementById("bubbles");
+
+for (let i = 0; i < 12; i++) {
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    const img = document.createElement("img");
+    img.src = bubbleImages[i % bubbleImages.length];
+    bubble.style.left = Math.random() * 100 + "vw";
+    bubble.style.top = Math.random() * 100 + "vh";
+    bubble.style.animationDuration = 15 + Math.random() * 10 + "s";
+
+    bubble.appendChild(img);
+    bubbleContainer.appendChild(bubble);
+}
+
