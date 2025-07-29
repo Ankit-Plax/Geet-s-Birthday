@@ -133,3 +133,12 @@ body {
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+/* Hide all sections by default except gift screen */
+.hero-section,
+#love-quiz-section,
+#puzzles,
+#memories,
+#final-section {
+    display: none;
+}
+
