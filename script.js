@@ -1,12 +1,20 @@
-// Open first gift
+// GIFT CLICK
 function openGift() {
-    document.getElementById("gift-screen").style.display = "none";
+    const giftScreen = document.getElementById("gift-screen");
+    const sparkles = document.getElementById("sparkles");
+
+    // Show sparkle burst
+    sparkles.classList.add("active");
+    setTimeout(() => sparkles.classList.remove("active"), 1000);
+
+    giftScreen.style.display = "none";
     document.getElementById("background-music").play();
+
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
 }
 
-// Music toggle
+// MUSIC TOGGLE
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -19,7 +27,7 @@ function toggleMusic() {
     }
 }
 
-// LOVE answer
+// LOVE QUIZ RESPONSE
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
@@ -33,7 +41,7 @@ function loveAnswer(isYes) {
     }
 }
 
-// Puzzle logic
+// PUZZLE ANSWER
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
@@ -62,7 +70,6 @@ function puzzleAnswer(el, isCorrect) {
 
             typeTarget.textContent = "";
             typeWriter();
-
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
@@ -70,26 +77,17 @@ function puzzleAnswer(el, isCorrect) {
     }
 }
 
-// Final gift logic
+// FINAL GIFT OPENS LETTER
 function openFinalGift() {
-    const sparkles = document.getElementById("sparkles");
-    sparkles.classList.add("active"); // Add burst effect
-
-    // Hide final gift and show love letter
     document.getElementById("final-section").style.display = "none";
-    document.getElementById("love-letter-section").style.display = "block";
-
-    // Remove sparkles after a while
-    setTimeout(() => {
-        sparkles.classList.remove("active");
-    }, 1500);
+    document.getElementById("love-letter").style.display = "block";
 }
 
-// FLOATING BUBBLES - spaced out over time
-const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Your placeholder paths
+// BUBBLE GENERATOR (gradual and spaced)
+const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Replace with actual image paths
 const bubbleContainer = document.getElementById("bubbles");
 
-function spawnBubble(i) {
+function generateBubble(i) {
     const bubble = document.createElement("div");
     bubble.className = "bubble";
 
@@ -98,13 +96,12 @@ function spawnBubble(i) {
 
     bubble.appendChild(img);
     bubble.style.left = Math.random() * 100 + "vw";
-    bubble.style.top = 100 + Math.random() * 100 + "vh";
-    bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
+    bubble.style.top = 100 + Math.random() * 50 + "vh";
+    bubble.style.animationDuration = 20 + Math.random() * 15 + "s";
 
     bubbleContainer.appendChild(bubble);
 }
 
-// Staggered bubble spawn (one every 500ms)
 for (let i = 0; i < 20; i++) {
-    setTimeout(() => spawnBubble(i), i * 500);
+    setTimeout(() => generateBubble(i), i * 300);
 }
