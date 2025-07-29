@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday My Love 🎂</title>
+  <title>Happy Birthday!</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container" id="intro">
+  <div id="overlay" class="overlay">
     <h1>🎉 Happy Birthday My Love! 🎂</h1>
-    <div class="gift-box">🎁</div>
-    <button id="reveal-btn">🎁 Click Me!</button>
+    <button id="giftBtn">🎁 Click me!</button>
+    <p>You mean the world to me…</p>
   </div>
 
-  <div class="greeting hidden" id="greeting">
-    <h1>💖 Happy Birthday, My Beautiful Love! 💖</h1>
-    <p>You light up my life more than any star in the sky ✨</p>
-    <div id="bubbles"></div>
+  <div id="mainContent" class="hidden">
     <canvas id="confetti"></canvas>
+    <div id="bubble-container">
+      <!-- Placeholder for floating bubbles -->
+      <!-- You can later add <img src="IMAGE_URL" class="bubble" /> inside here -->
+    </div>
+    <div class="message">
+      <h2>💖 Happy Birthday Again 💖</h2>
+      <p>I love you endlessly and this day is all about you!</p>
+    </div>
   </div>
 
   <script src="script.js"></script>
