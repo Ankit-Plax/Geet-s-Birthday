@@ -1,12 +1,4 @@
-// Open first gift
-function openGift() {
-    document.getElementById("gift-screen").style.display = "none";
-    document.getElementById("background-music").play();
-    document.querySelector(".hero-section").style.display = "block";
-    document.getElementById("love-quiz-section").style.display = "block";
-}
-
-// Music toggle
+// MUSIC TOGGLE
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -19,7 +11,27 @@ function toggleMusic() {
     }
 }
 
-// LOVE answer
+// OPEN GIFT FUNCTION
+function openGift() {
+    document.getElementById("gift-screen").style.display = "none";
+    document.getElementById("background-music").play();
+
+    // 🎉 Sparkles + pop sound
+    const sparkles = document.getElementById("sparkles");
+    const pop = new Audio("audio/pop.mp3"); // Make sure this file exists
+    pop.play();
+    sparkles.classList.add("active");
+    setTimeout(() => sparkles.classList.remove("active"), 1500);
+
+    // Show first sections
+    document.querySelector(".hero-section").style.display = "block";
+    document.getElementById("love-quiz-section").style.display = "block";
+
+    // Start floating bubbles
+    spawnBubbles();
+}
+
+// LOVE QUIZ RESPONSE
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
@@ -33,7 +45,7 @@ function loveAnswer(isYes) {
     }
 }
 
-// Puzzle logic
+// PUZZLE LOGIC
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
@@ -62,7 +74,6 @@ function puzzleAnswer(el, isCorrect) {
 
             typeTarget.textContent = "";
             typeWriter();
-
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
@@ -70,41 +81,41 @@ function puzzleAnswer(el, isCorrect) {
     }
 }
 
-// Final gift logic
+// FINAL GIFT OPENER
 function openFinalGift() {
     const sparkles = document.getElementById("sparkles");
-    sparkles.classList.add("active"); // Add burst effect
+    sparkles.classList.add("active");
 
-    // Hide final gift and show love letter
     document.getElementById("final-section").style.display = "none";
     document.getElementById("love-letter-section").style.display = "block";
 
-    // Remove sparkles after a while
+    // Stop the bubbles from floating
+    document.getElementById("bubbles").style.display = "none";
+
     setTimeout(() => {
         sparkles.classList.remove("active");
     }, 1500);
 }
 
-// FLOATING BUBBLES - spaced out over time
-const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Your placeholder paths
-const bubbleContainer = document.getElementById("bubbles");
+// SPAWN BUBBLES FUNCTION
+function spawnBubbles() {
+    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Replace with real paths
+    const bubbleContainer = document.getElementById("bubbles");
 
-function spawnBubble(i) {
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
 
-    const img = document.createElement("img");
-    img.src = bubbleImages[i % bubbleImages.length];
+            const img = document.createElement("img");
+            img.src = bubbleImages[i % bubbleImages.length];
+            bubble.appendChild(img);
 
-    bubble.appendChild(img);
-    bubble.style.left = Math.random() * 100 + "vw";
-    bubble.style.top = 100 + Math.random() * 100 + "vh";
-    bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
+            bubble.style.left = Math.random() * 100 + "vw";
+            bubble.style.top = 100 + Math.random() * 100 + "vh";
+            bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
 
-    bubbleContainer.appendChild(bubble);
-}
-
-// Staggered bubble spawn (one every 500ms)
-for (let i = 0; i < 20; i++) {
-    setTimeout(() => spawnBubble(i), i * 500);
+            bubbleContainer.appendChild(bubble);
+        }, i * 400); // Delayed spawn to avoid clumps
+    }
 }
