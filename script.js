@@ -65,16 +65,31 @@ function startBubbles() {
 
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
+    const confettiAudio = document.getElementById("confetti-sound");
+
     if (isYes) {
         response.textContent = "I knew it! I love you more 💖";
+
+        // Play sound
+        confettiAudio.play();
+
+        // Confetti burst
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 }
+        });
+
+        // Wait 3 seconds before moving to next section
         setTimeout(() => {
             document.getElementById("love-quiz-section").style.display = "none";
             document.getElementById("puzzles").style.display = "block";
-        }, 1500);
+        }, 3000);
     } else {
         response.textContent = "That's not allowed! 😡";
     }
 }
+
 
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
