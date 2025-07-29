@@ -274,5 +274,20 @@ body {
     opacity: 0;
   }
 }
+.print-button {
+  margin: 2rem auto;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background: #ffb3d9;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.print-button:hover {
+  background: #ff99cc;
+}
 
 
