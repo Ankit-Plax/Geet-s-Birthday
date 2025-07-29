@@ -41,8 +41,15 @@ function puzzleAnswer(el, isCorrect) {
         el.textContent = "Exactly! That smile is everything 😊";
 
         setTimeout(() => {
-          document.getElementById("puzzles").style.display = "none";
-document.getElementById("pre-letter").style.display = "block";
+            // Hide puzzles and show suspense message
+            document.getElementById("puzzles").style.display = "none";
+            document.getElementById("pre-letter").style.display = "block";
+
+            // After suspense delay, show final gift section
+            setTimeout(() => {
+                document.getElementById("pre-letter").style.display = "none";
+                document.getElementById("final-section").style.display = "block";
+            }, 5000); // 5 seconds suspense
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
@@ -56,7 +63,7 @@ function openFinalGift() {
     document.getElementById("love-letter").style.display = "block";
 }
 
-// Slideshow logic
+// Slideshow logic (if you still need it for future)
 let currentSlide = 0;
 const slides = document.querySelectorAll(".memory-slide");
 if (slides.length > 0) {
@@ -67,9 +74,10 @@ if (slides.length > 0) {
         slides[currentSlide].classList.add("active");
     }, 4000);
 }
-// Bubbles
+
+// Floating bubbles logic
 const bubbleImages = [
-    'img1.jpg', 'img2.jpg', 'img3.jpg' // replace with real image paths
+    'img1.jpg', 'img2.jpg', 'img3.jpg' // Replace with your real image file names
 ];
 
 const bubbleContainer = document.getElementById("bubbles");
@@ -80,11 +88,11 @@ for (let i = 0; i < 12; i++) {
 
     const img = document.createElement("img");
     img.src = bubbleImages[i % bubbleImages.length];
-    bubble.style.left = Math.random() * 100 + "vw";
-    bubble.style.top = Math.random() * 100 + "vh";
-    bubble.style.animationDuration = 15 + Math.random() * 10 + "s";
 
     bubble.appendChild(img);
+    bubble.style.left = Math.random() * 100 + "vw";
+    bubble.style.top = 100 + Math.random() * 20 + "vh"; // Start below screen
+    bubble.style.animationDuration = 15 + Math.random() * 10 + "s";
+
     bubbleContainer.appendChild(bubble);
 }
-
