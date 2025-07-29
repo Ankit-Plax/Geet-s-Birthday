@@ -41,21 +41,38 @@ function puzzleAnswer(el, isCorrect) {
         el.textContent = "Exactly! That smile is everything 😊";
 
         setTimeout(() => {
-            // Hide puzzles and show suspense message
             document.getElementById("puzzles").style.display = "none";
             document.getElementById("pre-letter").style.display = "block";
 
-            // After suspense delay, show final gift section
-            setTimeout(() => {
-                document.getElementById("pre-letter").style.display = "none";
-                document.getElementById("final-section").style.display = "block";
-            }, 5000); // 5 seconds suspense
+            const fullMessage = `Hey Geet,\n\nI know we live far apart, and I couldn’t do all the things I wish I could for your birthday...\n\nBut I poured all my love into something that means the world to me — this letter, just for you.`;
+            const typeTarget = document.getElementById("typewriter-text");
+            let i = 0;
+
+            function typeWriter() {
+                if (i < fullMessage.length) {
+                    typeTarget.textContent += fullMessage.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 40); // typing speed
+                } else {
+                    // After typing, wait 4s then show final gift
+                    setTimeout(() => {
+                        document.getElementById("pre-letter").style.display = "none";
+                        document.getElementById("final-section").style.display = "block";
+                    }, 4000);
+                }
+            }
+
+            // Start typing
+            typeTarget.textContent = "";
+            typeWriter();
+
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
         el.textContent = "Aww close, but try again!";
     }
 }
+
 
 // Final gift
 function openFinalGift() {
