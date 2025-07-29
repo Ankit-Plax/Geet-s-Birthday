@@ -7,8 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-    <div class="bubble-background" id="bubbles"></div>
 <body>
+    <!-- Background Effects -->
+    <div class="bubble-background" id="bubbles"></div>
+
     <!-- Initial Gift Box Screen -->
     <div id="gift-screen">
         <div class="gift-box" onclick="openGift()">🎁</div>
@@ -19,12 +21,14 @@
     <div class="floating-photos" id="floating-photos"></div>
 
     <div class="main-content">
+        <!-- Hero Section -->
         <section class="hero-section">
             <h1 class="hero-title">Happy Birthday, My Love</h1>
             <div class="hero-heart">💕</div>
             <p class="hero-subtitle">Today is all about celebrating the most amazing person in my world</p>
         </section>
 
+        <!-- Love Quiz -->
         <section class="section" id="love-quiz-section">
             <h2>A Quick Question! 😘</h2>
             <div class="love-quiz">
@@ -37,6 +41,7 @@
             </div>
         </section>
 
+        <!-- Puzzle -->
         <section class="section" id="puzzles">
             <h2>Let's Play Some Games! 🎮</h2>
             <div class="puzzle-container">
@@ -50,15 +55,12 @@
             </div>
         </section>
 
-      <section class="section" id="pre-letter">
-    <h2 class="fade-text" style="font-size: 2rem; max-width: 700px; text-align: center; line-height: 1.8;">
-        <span>Hey Geet,</span><br><br>
-        I know we live far apart, and I couldn’t do all the things I wish I could for your birthday...<br><br>
-        But I poured all my love into something that means the world to me — this letter, just for you.
-    </h2>
-</section>
+        <!-- Suspense Message Section -->
+        <section class="section" id="pre-letter">
+            <h2 id="typewriter-text" style="font-size: 1.7rem; max-width: 700px; text-align: center; line-height: 1.8;"></h2>
+        </section>
 
-
+        <!-- Final Gift -->
         <section class="section final-gift-section" id="final-section">
             <h2>One Last Surprise... 🎁</h2>
             <div class="gift-instruction">Click the gift for something special!</div>
@@ -82,6 +84,7 @@
         </section>
     </div>
 
+    <!-- Music Controls -->
     <button class="music-control" onclick="toggleMusic()" id="music-btn">🎵</button>
     <audio id="background-music" loop>
         <source src="audio/her-song.mp3" type="audio/mpeg">
