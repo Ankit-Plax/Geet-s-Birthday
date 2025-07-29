@@ -41,8 +41,8 @@ function puzzleAnswer(el, isCorrect) {
         el.textContent = "Exactly! That smile is everything 😊";
 
         setTimeout(() => {
-            document.getElementById("puzzles").style.display = "none";
-            document.getElementById("memories").style.display = "block";
+          document.getElementById("puzzles").style.display = "none";
+document.getElementById("pre-letter").style.display = "block";
         }, 1500);
     } else {
         el.style.background = "#ffd6d6";
