@@ -1,11 +1,12 @@
+// Open first gift
 function openGift() {
     document.getElementById("gift-screen").style.display = "none";
     document.getElementById("background-music").play();
-
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
 }
 
+// Music toggle
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -18,6 +19,7 @@ function toggleMusic() {
     }
 }
 
+// LOVE answer
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
@@ -31,6 +33,7 @@ function loveAnswer(isYes) {
     }
 }
 
+// Puzzle logic
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
@@ -67,16 +70,26 @@ function puzzleAnswer(el, isCorrect) {
     }
 }
 
+// Final gift logic
 function openFinalGift() {
+    const sparkles = document.getElementById("sparkles");
+    sparkles.classList.add("active"); // Add burst effect
+
+    // Hide final gift and show love letter
     document.getElementById("final-section").style.display = "none";
-    document.getElementById("love-letter").style.display = "block";
+    document.getElementById("love-letter-section").style.display = "block";
+
+    // Remove sparkles after a while
+    setTimeout(() => {
+        sparkles.classList.remove("active");
+    }, 1500);
 }
 
-// Floating bubbles
-const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Replace with real image paths
+// FLOATING BUBBLES - spaced out over time
+const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg']; // Your placeholder paths
 const bubbleContainer = document.getElementById("bubbles");
 
-for (let i = 0; i < 20; i++) {
+function spawnBubble(i) {
     const bubble = document.createElement("div");
     bubble.className = "bubble";
 
@@ -85,8 +98,13 @@ for (let i = 0; i < 20; i++) {
 
     bubble.appendChild(img);
     bubble.style.left = Math.random() * 100 + "vw";
-    bubble.style.top = 100 + Math.random() * 50 + "vh";
-    bubble.style.animationDuration = 20 + Math.random() * 15 + "s";
+    bubble.style.top = 100 + Math.random() * 100 + "vh";
+    bubble.style.animationDuration = 20 + Math.random() * 10 + "s";
 
     bubbleContainer.appendChild(bubble);
+}
+
+// Staggered bubble spawn (one every 500ms)
+for (let i = 0; i < 20; i++) {
+    setTimeout(() => spawnBubble(i), i * 500);
 }
