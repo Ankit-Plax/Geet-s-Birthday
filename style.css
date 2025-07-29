@@ -173,5 +173,11 @@ body {
     from { transform: translateY(100vh) rotate(0deg); }
     to { transform: translateY(-120vh) rotate(360deg); }
 }
+#typewriter-text {
+  white-space: pre-wrap;
+  border-right: 2px solid rgba(255,255,255,0.5);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
 
 
