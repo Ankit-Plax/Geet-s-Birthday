@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Initial Gift Box Screen -->
+    <div id="gift-screen">
+        <div class="gift-box" onclick="openGift()">🎁</div>
+        <div class="gift-message">Click the gift to start your magical journey! 💖</div>
+    </div>
+
+    <div class="sparkle-explosion" id="sparkles"></div>
+    <div class="floating-photos" id="floating-photos"></div>
+
+    <div class="main-content">
+        <section class="hero-section">
+            <h1 class="hero-title">Happy Birthday, My Love</h1>
+            <div class="hero-heart">💕</div>
+            <p class="hero-subtitle">Today is all about celebrating the most amazing person in my world</p>
+        </section>
+
+        <section class="section" id="love-quiz-section">
+            <h2>A Quick Question! 😘</h2>
+            <div class="love-quiz">
+                <div class="quiz-question">Do you love me? 💕</div>
+                <div class="quiz-buttons">
+                    <button class="quiz-btn" onclick="loveAnswer(true)">YES! 💖</button>
+                    <button class="quiz-btn no-btn" onclick="loveAnswer(false)">No...</button>
+                </div>
+                <div class="quiz-response" id="love-response"></div>
+            </div>
+        </section>
+
+        <section class="section" id="puzzles">
+            <h2>Let's Play Some Games! 🎮</h2>
+            <div class="puzzle-container">
+                <div class="puzzle-question">What's my favorite thing about you?</div>
+                <div class="puzzle-options">
+                    <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your cooking skills</div>
+                    <div class="puzzle-option" onclick="puzzleAnswer(this, true)">Your beautiful smile that lights up my world</div>
+                    <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your singing voice</div>
+                    <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your dance moves</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="memories">
+            <h2>Our Beautiful Memories 📸</h2>
+            <div class="memory-slideshow">
+                <div class="memory-slide active">
+                    <div class="memory-photo"><img src="images/photo1.jpg" alt="Memory 1"></div>
+                    <p class="memory-caption">"The first moment I saw your face, I knew my heart had found its home."</p>
+                </div>
+                <div class="memory-slide">
+                    <div class="memory-photo"><img src="images/photo2.jpg" alt="Memory 2"></div>
+                    <p class="memory-caption">"Every conversation with you feels like discovering a new favorite song."</p>
+                </div>
+                <div class="memory-slide">
+                    <div class="memory-photo"><img src="images/photo3.jpg" alt="Memory 3"></div>
+                    <p class="memory-caption">"Distance means nothing when someone means everything to you."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section final-gift-section" id="final-section">
+            <h2>One Last Surprise... 🎁</h2>
+            <div class="gift-instruction">Click the gift for something special!</div>
+            <div class="final-gift-box" onclick="openFinalGift()">🎁</div>
+            
+            <div class="love-letter" id="love-letter">
+                <div class="letter-border"></div>
+                <div class="letter-decoration top-left">🌹</div>
+                <div class="letter-decoration top-right">💖</div>
+                <div class="letter-decoration bottom-left">✨</div>
+                <div class="letter-decoration bottom-right">🌹</div>
+                <div class="letter-content">
+                    My Dearest Love,<br><br>
+                    On this beautiful day that celebrates you, I want you to know that you are the most precious gift life has ever given me. Your laughter is my favorite melody, your smile is my daily sunshine, and your love is my greatest treasure.<br><br>
+                    Though miles may separate us, you are always here in my heart, making every moment brighter just by existing. You are my dream come true, my safe place, and my forever person.<br><br>
+                    Happy Birthday, my beautiful angel. I love you more than words could ever express, more than the stars in the sky, more than infinity itself.<br><br>
+                    Forever and always yours,
+                </div>
+                <div class="letter-signature">Your Loving Boyfriend 💕</div>
+            </div>
+        </section>
+    </div>
+
+    <button class="music-control" onclick="toggleMusic()" id="music-btn">🎵</button>
+    <audio id="background-music" loop>
+        <source src="audio/her-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

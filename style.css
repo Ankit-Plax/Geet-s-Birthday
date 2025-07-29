@@ -1,0 +1,135 @@
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+    color: #5c004d;
+    overflow-x: hidden;
+}
+.gift-box, .final-gift-box {
+    font-size: 5rem;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    text-align: center;
+    margin: 2rem auto;
+}
+.gift-message, .gift-instruction {
+    text-align: center;
+    font-size: 1.3rem;
+}
+#gift-screen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #fffafc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.hero-section {
+    padding: 3rem 1rem;
+    text-align: center;
+    background: #fff0f8;
+}
+.hero-title {
+    font-family: 'Sacramento', cursive;
+    font-size: 3.5rem;
+    color: #d1006c;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+.hero-heart {
+    font-size: 2rem;
+}
+.section {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.quiz-buttons {
+    margin-top: 1rem;
+}
+.quiz-btn {
+    background: #ffb3d9;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.no-btn:hover {
+    transform: translateX(20px);
+}
+.puzzle-option {
+    margin: 0.5rem auto;
+    background: #ffe6f0;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    max-width: 300px;
+    cursor: pointer;
+}
+.puzzle-option:hover {
+    background: #ffd9ec;
+}
+.memory-slideshow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.memory-slide {
+    display: none;
+}
+.memory-slide.active {
+    display: block;
+}
+.memory-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+}
+.memory-caption {
+    font-style: italic;
+}
+.love-letter {
+    display: none;
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 500px;
+    background: #fffafc;
+    border: 2px solid #ffb6c1;
+    border-radius: 20px;
+    position: relative;
+    text-align: left;
+}
+.letter-decoration {
+    position: absolute;
+}
+.top-left { top: 0.5rem; left: 1rem; }
+.top-right { top: 0.5rem; right: 1rem; }
+.bottom-left { bottom: 0.5rem; left: 1rem; }
+.bottom-right { bottom: 0.5rem; right: 1rem; }
+.letter-signature {
+    text-align: right;
+    margin-top: 1rem;
+    font-style: italic;
+}
+.music-control {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
