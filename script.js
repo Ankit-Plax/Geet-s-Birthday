@@ -11,21 +11,28 @@ function toggleMusic() {
     }
 }
 
-// OPEN GIFT FUNCTION
 function openGift() {
+    // Hide initial gift screen
     document.getElementById("gift-screen").style.display = "none";
+
+    // Play background music
     document.getElementById("background-music").play();
+
+    // Play pop sound
+    const pop = new Audio("audio/pop.mp3"); // Ensure this file exists in your audio folder
+    pop.play();
+
+    // Trigger animated sparkles
+    triggerSparkles();
+
+    // Show hero + quiz sections
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
 
-    // 🎉 Sparkle effect
-    triggerSparkles();
-
-    // 💬 Start bubbles immediately
+    // Start bubbles
     startBubbles();
 }
 
-}
 
 // LOVE QUIZ RESPONSE
 function loveAnswer(isYes) {
