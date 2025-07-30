@@ -71,21 +71,20 @@ function startBubbles() {
 }
 
 function loveAnswer(isYes) {
+ function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
         response.textContent = "I knew it! I love you more 💖";
+        confetti(); // already launches confetti
 
-        // 🎉 Show confetti
-        triggerConfetti();
+        // Fix: Add confetti sound here
+        const confettiSound = document.getElementById("confetti-sound");
+        if (confettiSound) confettiSound.play();
 
-        // 🔊 Play sound
-        confettiSound.play();
-
-        // After delay, move to puzzle
         setTimeout(() => {
             document.getElementById("love-quiz-section").style.display = "none";
             document.getElementById("puzzles").style.display = "block";
-        }, 3000); // 3-second delay to enjoy confetti
+        }, 3000); // 3s delay to enjoy confetti
     } else {
         response.textContent = "That's not allowed! 😡";
     }
