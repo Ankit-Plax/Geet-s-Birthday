@@ -1,5 +1,3 @@
-const confettiSound = new Audio("audio/confetti.mp3"); // Make sure this file exists
-
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -14,7 +12,7 @@ function toggleMusic() {
 
 function triggerSparkles() {
     const container = document.getElementById("sparkles");
-    container.innerHTML = ''; // clear existing
+    container.innerHTML = '';
 
     for (let i = 0; i < 60; i++) {
         const particle = document.createElement("div");
@@ -30,51 +28,53 @@ function triggerSparkles() {
     }
 }
 
+function triggerConfetti() {
+    const count = 80;
+    const colors = ["#ff6ec4", "#ffc3a0", "#ffb6b9", "#fcd5ce", "#e0bbf4"];
+    const container = document.body;
+
+    for (let i = 0; i < count; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+        confetti.style.opacity = Math.random();
+
+        container.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4000);
+    }
+}
+
 function openGift() {
-    document.getElementById("gift-screen").style.display = "none";
     document.getElementById("background-music").play();
     document.getElementById("pop-sound").play();
+    document.getElementById("sparkle-sound").play();
     triggerSparkles();
+    startBubbles();
+
+    document.getElementById("gift-screen").style.display = "none";
     document.querySelector(".hero-section").style.display = "block";
     document.getElementById("love-quiz-section").style.display = "block";
-    startBubbles();
 }
 
 function openFinalGift() {
+    document.getElementById("pop-sound").play();
     triggerSparkles();
     document.getElementById("final-section").style.display = "none";
     document.getElementById("love-letter-section").style.display = "block";
     document.getElementById("bubbles").style.display = "none";
-    function openFinalGift() {
-    const sparkles = document.getElementById("sparkles");
-    sparkles.classList.add("active");
-
-    // ✅ Add pop sound
-    const pop = document.getElementById("pop-sound");
-    if (pop) pop.play();
-
-    // Show love letter
-    document.getElementById("final-section").style.display = "none";
-    document.getElementById("love-letter-section").style.display = "block";
-
-    // Stop bubbles behind the love letter
-    document.getElementById("bubbles").style.display = "none";
-
-    // Remove sparkles after a second
-    setTimeout(() => {
-        sparkles.classList.remove("active");
-    }, 1000);
-}
-
 }
 
 function startBubbles() {
     const bubbleImages = [
-  'bubbles/img1.jpg',
-  'bubbles/img2.jpg',
-  'bubbles/img3.jpg'
-];
-
+        'bubbles/img1.jpg',
+        'bubbles/img2.jpg',
+        'bubbles/img3.jpg'
+    ];
     const bubbleContainer = document.getElementById("bubbles");
     for (let i = 0; i < 25; i++) {
         setTimeout(() => {
@@ -92,31 +92,26 @@ function startBubbles() {
 }
 
 function loveAnswer(isYes) {
- function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
     if (isYes) {
         response.textContent = "I knew it! I love you more 💖";
-        confetti(); // already launches confetti
 
-        // Fix: Add confetti sound here
-        const confettiSound = document.getElementById("confetti-sound");
-        if (confettiSound) confettiSound.play();
+        document.getElementById("confetti-sound").play();
+        triggerConfetti();
 
         setTimeout(() => {
             document.getElementById("love-quiz-section").style.display = "none";
             document.getElementById("puzzles").style.display = "block";
-        }, 3000); // 3s delay to enjoy confetti
+        }, 3000);
     } else {
         response.textContent = "That's not allowed! 😡";
     }
 }
 
-
-
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
-        el.textContent = "Correct!You are my everything Geet!";
+        el.textContent = "Exactly!";
 
         setTimeout(() => {
             document.getElementById("puzzles").style.display = "none";
@@ -125,6 +120,7 @@ function puzzleAnswer(el, isCorrect) {
             const fullMessage = `Hey Geet,\n\nI know we live far apart, and I couldn’t do all the things I wish I could for your birthday...\n\nBut I poured all my love into something that means the world to me — this letter, just for you.`;
             const typeTarget = document.getElementById("typewriter-text");
             let i = 0;
+
             function typeWriter() {
                 if (i < fullMessage.length) {
                     typeTarget.textContent += fullMessage.charAt(i);
@@ -137,6 +133,7 @@ function puzzleAnswer(el, isCorrect) {
                     }, 4000);
                 }
             }
+
             typeTarget.textContent = "";
             typeWriter();
         }, 1500);
@@ -145,6 +142,7 @@ function puzzleAnswer(el, isCorrect) {
         el.textContent = "Aww close, but try again!";
     }
 }
+
 function printLoveLetter() {
     const printContents = document.getElementById("love-letter").innerHTML;
     const win = window.open("", "", "height=700,width=700");
@@ -180,72 +178,3 @@ function printLoveLetter() {
     win.print();
     win.close();
 }
-
-// Music toggle
-function toggleMusic() {
-    const music = document.getElementById("background-music");
-    const btn = document.getElementById("music-btn");
-    if (music.paused) {
-        music.play();
-        btn.textContent = "🔊";
-    } else {
-        music.pause();
-        btn.textContent = "🔇";
-    }
-}
-
-// Play pop on gift open
-function openGift() {
-    document.getElementById("background-music").play();
-    document.getElementById("pop-sound").play();
-    document.getElementById("sparkle-sound").play();
-    triggerSparkles();
-    startBubbles();
-
-    document.getElementById("gift-screen").style.display = "none";
-    document.querySelector(".hero-section").style.display = "block";
-    document.getElementById("love-quiz-section").style.display = "block";
-}
-
-// Play confetti on "YES"
-function loveAnswer(isYes) {
-    const response = document.getElementById("love-response");
-    if (isYes) {
-        response.textContent = "I knew it! I love you more 💖";
-
-        // Play confetti sound
-        document.getElementById("confetti-sound").play();
-
-        // Show confetti (assume confetti function exists)
-        triggerConfetti();
-
-        // Wait 3 seconds, then show puzzle
-        setTimeout(() => {
-            document.getElementById("love-quiz-section").style.display = "none";
-            document.getElementById("puzzles").style.display = "block";
-        }, 3000);
-    } else {
-        response.textContent = "That's not allowed! 😡";
-    }
-}
-function triggerConfetti() {
-    const count = 80;
-    const colors = ["#ff6ec4", "#ffc3a0", "#ffb6b9", "#fcd5ce", "#e0bbf4"];
-    const container = document.body;
-
-    for (let i = 0; i < count; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
-        confetti.style.opacity = Math.random();
-
-        container.appendChild(confetti);
-
-        setTimeout(() => {
-            confetti.remove();
-        }, 4000);
-    }
-}
-
