@@ -45,6 +45,27 @@ function openFinalGift() {
     document.getElementById("final-section").style.display = "none";
     document.getElementById("love-letter-section").style.display = "block";
     document.getElementById("bubbles").style.display = "none";
+    function openFinalGift() {
+    const sparkles = document.getElementById("sparkles");
+    sparkles.classList.add("active");
+
+    // ✅ Add pop sound
+    const pop = document.getElementById("pop-sound");
+    if (pop) pop.play();
+
+    // Show love letter
+    document.getElementById("final-section").style.display = "none";
+    document.getElementById("love-letter-section").style.display = "block";
+
+    // Stop bubbles behind the love letter
+    document.getElementById("bubbles").style.display = "none";
+
+    // Remove sparkles after a second
+    setTimeout(() => {
+        sparkles.classList.remove("active");
+    }, 1000);
+}
+
 }
 
 function startBubbles() {
