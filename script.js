@@ -96,7 +96,7 @@ function loveAnswer(isYes) {
 function puzzleAnswer(el, isCorrect) {
     if (isCorrect) {
         el.style.background = "#c6ffc1";
-        el.textContent = "Exactly! That smile is everything 😊";
+        el.textContent = "Correct!You are my everything Geet!";
 
         setTimeout(() => {
             document.getElementById("puzzles").style.display = "none";
