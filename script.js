@@ -1,3 +1,5 @@
+const confettiSound = new Audio("audio/confetti.mp3"); // Make sure this file exists
+
 function toggleMusic() {
     const music = document.getElementById("background-music");
     const btn = document.getElementById("music-btn");
@@ -70,30 +72,25 @@ function startBubbles() {
 
 function loveAnswer(isYes) {
     const response = document.getElementById("love-response");
-    const confettiAudio = document.getElementById("confetti-sound");
-
     if (isYes) {
         response.textContent = "I knew it! I love you more 💖";
 
-        // Play sound
-        confettiAudio.play();
+        // 🎉 Show confetti
+        triggerConfetti();
 
-        // Confetti burst
-        confetti({
-            particleCount: 150,
-            spread: 80,
-            origin: { y: 0.6 }
-        });
+        // 🔊 Play sound
+        confettiSound.play();
 
-        // Wait 3 seconds before moving to next section
+        // After delay, move to puzzle
         setTimeout(() => {
             document.getElementById("love-quiz-section").style.display = "none";
             document.getElementById("puzzles").style.display = "block";
-        }, 3000);
+        }, 3000); // 3-second delay to enjoy confetti
     } else {
         response.textContent = "That's not allowed! 😡";
     }
 }
+
 
 
 function puzzleAnswer(el, isCorrect) {
@@ -211,3 +208,24 @@ function loveAnswer(isYes) {
         response.textContent = "That's not allowed! 😡";
     }
 }
+function triggerConfetti() {
+    const count = 80;
+    const colors = ["#ff6ec4", "#ffc3a0", "#ffb6b9", "#fcd5ce", "#e0bbf4"];
+    const container = document.body;
+
+    for (let i = 0; i < count; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+        confetti.style.opacity = Math.random();
+
+        container.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4000);
+    }
+}
+
