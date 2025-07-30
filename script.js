@@ -46,7 +46,12 @@ function openFinalGift() {
 }
 
 function startBubbles() {
-    const bubbleImages = ['img1.jpg', 'img2.jpg', 'img3.jpg'];
+    const bubbleImages = [
+  'bubbles/img1.jpg',
+  'bubbles/img2.jpg',
+  'bubbles/img3.jpg'
+];
+
     const bubbleContainer = document.getElementById("bubbles");
     for (let i = 0; i < 25; i++) {
         setTimeout(() => {
