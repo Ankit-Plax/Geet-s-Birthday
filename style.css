@@ -289,5 +289,20 @@ body {
 .print-button:hover {
   background: #ff99cc;
 }
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    border-radius: 50%;
+    animation: confettiFall linear forwards;
+    z-index: 9999;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
 
 
