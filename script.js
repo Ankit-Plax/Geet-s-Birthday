@@ -164,3 +164,50 @@ function printLoveLetter() {
     win.close();
 }
 
+// Music toggle
+function toggleMusic() {
+    const music = document.getElementById("background-music");
+    const btn = document.getElementById("music-btn");
+    if (music.paused) {
+        music.play();
+        btn.textContent = "🔊";
+    } else {
+        music.pause();
+        btn.textContent = "🔇";
+    }
+}
+
+// Play pop on gift open
+function openGift() {
+    document.getElementById("background-music").play();
+    document.getElementById("pop-sound").play();
+    document.getElementById("sparkle-sound").play();
+    triggerSparkles();
+    startBubbles();
+
+    document.getElementById("gift-screen").style.display = "none";
+    document.querySelector(".hero-section").style.display = "block";
+    document.getElementById("love-quiz-section").style.display = "block";
+}
+
+// Play confetti on "YES"
+function loveAnswer(isYes) {
+    const response = document.getElementById("love-response");
+    if (isYes) {
+        response.textContent = "I knew it! I love you more 💖";
+
+        // Play confetti sound
+        document.getElementById("confetti-sound").play();
+
+        // Show confetti (assume confetti function exists)
+        triggerConfetti();
+
+        // Wait 3 seconds, then show puzzle
+        setTimeout(() => {
+            document.getElementById("love-quiz-section").style.display = "none";
+            document.getElementById("puzzles").style.display = "block";
+        }, 3000);
+    } else {
+        response.textContent = "That's not allowed! 😡";
+    }
+}
