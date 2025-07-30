@@ -305,4 +305,22 @@ body {
     }
 }
 
+.side-hint-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: #ffcce0;
+  color: #5c004d;
+  border: none;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.side-hint-button:hover {
+  background-color: #ff99c2;
+}
 
