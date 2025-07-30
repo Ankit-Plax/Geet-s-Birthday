@@ -49,15 +49,14 @@
       <h2>Let's Play Some Games! 🎮</h2>
       <div class="puzzle-container">
         <div class="puzzle-question">What's my favorite thing about you?</div>
-       <div class="puzzle-options">
-  <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your smile</div>
-  <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your personality</div>
-  <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your eyes</div>
-  <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your beautiful voice</div>
-  <div class="puzzle-option" onclick="puzzleAnswer(this, true)">Everything</div>
-</div>
+        <div class="puzzle-options">
+          <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your smile</div>
+          <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your personality</div>
+          <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your eyes</div>
+          <div class="puzzle-option" onclick="puzzleAnswer(this, false)">Your beautiful voice</div>
+          <div class="puzzle-option" onclick="puzzleAnswer(this, true)">Everything</div>
+        </div>
         <button class="side-hint-button" onclick="alert('Think deeply... what do I love the most about you?')">💡 Hint</button>
-
       </div>
     </section>
 
@@ -94,21 +93,16 @@
     </section>
   </div>
 
-  <!-- Music -->
+  <!-- Music Button -->
   <button class="music-control" onclick="toggleMusic()" id="music-btn">🎵</button>
-  <audio id="background-music" loop>
-    <source src="audio/her-song.mp3" type="audio/mpeg">
-  </audio>
+
+  <!-- Audio Files (Correctly Loaded Once) -->
+  <audio id="background-music" src="audio/her-song.mp3" loop preload="auto"></audio>
   <audio id="pop-sound" src="audio/pop.mp3" preload="auto"></audio>
-<audio id="confetti-sound" src="audio/confetti-pop.mp3" preload="auto"></audio>
+  <audio id="confetti-sound" src="audio/confetti.mp3" preload="auto"></audio>
+  <audio id="sparkle-sound" src="audio/sparkle.mp3" preload="auto"></audio>
+
+  <!-- Main Script -->
   <script src="script.js"></script>
-  <!-- Background Music -->
-<audio id="background-music" src="audio/her-song.mp3" loop preload="auto"></audio>
-
-<!-- Sound Effects -->
-<audio id="pop-sound" src="audio/pop.mp3" preload="auto"></audio>
-<audio id="confetti-sound" src="audio/confetti.mp3" preload="auto"></audio>
-<audio id="sparkle-sound" src="audio/sparkle.mp3" preload="auto"></audio>
-
 </body>
 </html>
